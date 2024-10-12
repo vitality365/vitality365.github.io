@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.18" />
+    <style>
+      :root {
+        --vp-c-bg: #fff;
+      }
+
+      [data-theme='dark'] {
+        --vp-c-bg: #1b1b1f;
+      }
+
+      html,
+      body {
+        background-color: var(--vp-c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme')
+      const systemDarkMode =
+        'matchMedia' in window
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : false
+
+      if (userMode === 'light') {
+        document.documentElement.dataset.theme = 'light'
+      } else if (userMode === 'dark' || systemDarkMode) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
+    <title>ubuntu搭建lnmp yii mysql开发环境 | 活力网</title><meta name="description" content="记录生活点滴">
+    <link rel="preload" href="/assets/style-CMyawGRf.css" as="style"><link rel="stylesheet" href="/assets/style-CMyawGRf.css">
+    <link rel="modulepreload" href="/assets/app-CpbStbhd.js"><link rel="modulepreload" href="/assets/article3.html-CoUQFxOH.js">
+    <link rel="prefetch" href="/assets/index.html-BVJwz840.js" as="script"><link rel="prefetch" href="/assets/urls.html-ORT_lo93.js" as="script"><link rel="prefetch" href="/assets/article1.html-CsL09xkx.js" as="script"><link rel="prefetch" href="/assets/article10.html-CkjZeK8u.js" as="script"><link rel="prefetch" href="/assets/article11.html-Bm-VLKX1.js" as="script"><link rel="prefetch" href="/assets/article12.html-CLNaMgi5.js" as="script"><link rel="prefetch" href="/assets/article13.html-DGU4oV_R.js" as="script"><link rel="prefetch" href="/assets/article2.html-0Y_mMYC3.js" as="script"><link rel="prefetch" href="/assets/article4.html-DcyGHsBC.js" as="script"><link rel="prefetch" href="/assets/article5.html-CZm8u4Em.js" as="script"><link rel="prefetch" href="/assets/article6.html-DkH8aGsH.js" as="script"><link rel="prefetch" href="/assets/article7.html-BzjbGP-c.js" as="script"><link rel="prefetch" href="/assets/article8.html-Ddeun9q7.js" as="script"><link rel="prefetch" href="/assets/article9.html-ZTPtuNBE.js" as="script"><link rel="prefetch" href="/assets/404.html-Cisv5JQj.js" as="script"><link rel="prefetch" href="/assets/index.html-Cs8PgDW8.js" as="script"><link rel="prefetch" href="/assets/index.html-cGhtNIDQ.js" as="script"><link rel="prefetch" href="/assets/index.html-C2Bi1-U4.js" as="script"><link rel="prefetch" href="/assets/index.html-CgkkwYTc.js" as="script"><link rel="prefetch" href="/assets/index.html-3obG4FF6.js" as="script"><link rel="prefetch" href="/assets/index.html-B_8wUyQD.js" as="script"><link rel="prefetch" href="/assets/index.html-Dj3heWPT.js" as="script"><link rel="prefetch" href="/assets/index.html-epsyYBNy.js" as="script"><link rel="prefetch" href="/assets/index.html-DEyMKgLV.js" as="script"><link rel="prefetch" href="/assets/index.html-B9Cx4lgd.js" as="script"><link rel="prefetch" href="/assets/index.html-B1X04a4y.js" as="script"><link rel="prefetch" href="/assets/index.html-BMd_W4ZQ.js" as="script"><link rel="prefetch" href="/assets/index.html-BF30LWfv.js" as="script"><link rel="prefetch" href="/assets/index.html-DMP-nxxy.js" as="script"><link rel="prefetch" href="/assets/index.html-Sc9wLbc7.js" as="script"><link rel="prefetch" href="/assets/index.html-B19Zoa79.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="vp-theme-container external-link-icon" vp-container><!--[--><header class="vp-navbar" vp-navbar><div class="vp-toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a class="route-link" href="/"><img class="vp-site-logo" src="https://vuejs.press/images/hero.png" alt="活力网"><span class="vp-site-name vp-hide-mobile" aria-hidden="true">活力网</span></a></span><div class="vp-navbar-items-wrapper" style=""><!--[--><!--]--><nav class="vp-navbar-items vp-hide-mobile" aria-label="site navigation"><!--[--><div class="vp-navbar-item"><a class="route-link auto-link" href="/" aria-label="首页"><!---->首页<!----></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/article/" aria-label="文章"><!---->文章<!----></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/category/" aria-label="分类"><!---->分类<!----></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/tag/" aria-label="标签"><!---->标签<!----></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/timeline/" aria-label="时间线"><!---->时间线<!----></a></div><!--]--></nav><!--[--><!--]--><button type="button" class="vp-toggle-color-mode-button" title="toggle color mode"><svg class="light-icon" viewbox="0 0 32 32" style=""><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg class="dark-icon" viewbox="0 0 32 32" style="display:none;"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><!----></div></header><!--]--><div class="vp-sidebar-mask"></div><!--[--><aside class="vp-sidebar" vp-sidebar><nav class="vp-navbar-items" aria-label="site navigation"><!--[--><div class="vp-navbar-item"><a class="route-link auto-link" href="/" aria-label="首页"><!---->首页<!----></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/article/" aria-label="文章"><!---->文章<!----></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/category/" aria-label="分类"><!---->分类<!----></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/tag/" aria-label="标签"><!---->标签<!----></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/timeline/" aria-label="时间线"><!---->时间线<!----></a></div><!--]--></nav><!--[--><!--]--><ul class="vp-sidebar-items"><!--[--><li><p tabindex="0" class="vp-sidebar-item vp-sidebar-heading">ubuntu搭建lnmp yii mysql开发环境 <!----></p><!----></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="vp-page"><!--[--><!--]--><div class="theme-default-content" vp-content><!--[--><!--]--><div><h1 id="ubuntu搭建lnmp-yii-mysql开发环境" tabindex="-1"><a class="header-anchor" href="#ubuntu搭建lnmp-yii-mysql开发环境"><span>ubuntu搭建lnmp yii mysql开发环境</span></a></h1><h2 id="安装php" tabindex="-1"><a class="header-anchor" href="#安装php"><span>安装php</span></a></h2><p>sudo apt install php7.2</p><h2 id="安装nginx" tabindex="-1"><a class="header-anchor" href="#安装nginx"><span>安装nginx</span></a></h2><p>sudo apt install nginx-full</p><h2 id="安装对应的php-fpm" tabindex="-1"><a class="header-anchor" href="#安装对应的php-fpm"><span>安装对应的php-fpm</span></a></h2><p>sudo apt install php7.2-fpm sudo apt install php7.2-mysql</p><h2 id="配置网站目录" tabindex="-1"><a class="header-anchor" href="#配置网站目录"><span>配置网站目录</span></a></h2><p>sudo vim /etc/nginx/sites-available/default</p><p>include /home/xxx/site.conf</p><p>/home/xxx/site.conf 内容如下</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text" data-title="text"><pre><code><span class="line">server {</span>
+<span class="line">listen 80;</span>
+<span class="line">#listen [::]:80;</span>
+<span class="line"></span>
+<span class="line">server_name long.dev.com;</span>
+<span class="line"></span>
+<span class="line">root /home/long/code;</span>
+<span class="line">index index.php;</span>
+<span class="line"></span>
+<span class="line">location / {</span>
+<span class="line">try_files $uri $uri/ /index.php$is_args$args;</span>
+<span class="line">}</span>
+<span class="line">location ~ \.php$ {</span>
+<span class="line">#try_files $uri $uri/ /index.php$is_args$args;</span>
+<span class="line">fastcgi_pass unix:/run/php/php7.2-fpm.sock;</span>
+<span class="line">include fastcgi_params;</span>
+<span class="line">}</span>
+<span class="line">error_log /home/long/code/nginx_error.log error;</span>
+<span class="line">#access_log /home/long/code/nginx_access.log main;</span>
+<span class="line">}</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在 /etc/nginx/fastcgi_params 文件里增加下面内容</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text" data-title="text"><pre><code><span class="line">fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span>
+<span class="line">fastcgi_param PATH_INFO $fastcgi_script_name;</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="重启php-fpm" tabindex="-1"><a class="header-anchor" href="#重启php-fpm"><span>重启php fpm</span></a></h2><p>sudo service php7.2-fpm restart</p><p>sudo nginx -s reload</p><h2 id="安装mysql" tabindex="-1"><a class="header-anchor" href="#安装mysql"><span>安装mysql</span></a></h2><p>ubuntu上安装mysql非常简单只需要几条命令就可以完成。</p><ol><li>sudo apt-get install mysql-server</li><li>apt-get isntall mysql-client</li><li>sudo apt-get install libmysqlclient-dev 安装过程中会提示设置密码什么的，注意设置了不要忘了，安装完成之后可以使用如下命令来检查是否安装成功：</li></ol><p>sudo netstat -tap | grep mysql</p><p>通过上述命令检查之后，如果看到有mysql 的socket处于 listen 状态则表示安装成功。</p><p>登陆mysql数据库可以通过如下命令：</p><p>mysql -u root -p -u 表示选择登陆的用户名， -p 表示登陆的用户密码，上面命令输入之后会提示输入密码，此时输入密码就可以登录到mysql。</p><h2 id="安装samba" tabindex="-1"><a class="header-anchor" href="#安装samba"><span>安装samba</span></a></h2><p>sudo apt-get install samba sudo apt-get install smbclient 安装完成后执行 samba -V 如果可以看到版本号即为安装成功</p><p>需要添加samba账户：</p><p>sudo smbpasswd -a username</p><p>Ubuntu下samba配置和使用 第二步需要配置samba服务器，使用如下命令打开samba的配置文件</p><p>sudo vi /etc/samba/smb.conf</p><p>加入配置信息</p><p>[test]</p><pre><code>comment = Public Stuff
+
+path = /home/test
+
+writable = yes
+
+valid users = test
+</code></pre><p>这其中比较重要的参数为path和valid users, path指定了samba服务器的根目录，可以任意指定合法路径； valid users表示可以访问samba服务器的合法用户；用户在配置时注意需要将路径改为自己需要的路径，切勿全盘照抄</p><p>Ubuntu下samba配置和使用 由于在上文中配置的samba服务器根文件路径在我的Ubuntu上还不存在，所以我需要在对应路径下创建文件夹，并修改其权限 mkdir share chmod 777 share</p><p>Ubuntu下samba配置和使用 接下来需要为samba服务器添加用户了，由于我的配置中使用的是名为&quot;zhang&quot;的用户(该用户其实就是我的登录用户)，所以我需要通过如下命令来为samba添加此用户并设置密码 sudo smbpasswd -a zhang</p><p>Ubuntu下samba配置和使用 配置完成后需要重启samba服务器，使用如下命令重启samba服务器</p><p>sudo /etc/init.d/samba restart</p><p>Ubuntu下samba配置和使用 接下来就可以在windows上访问samba服务器了，通过如下的方式访问</p><p>\+ ip</p><p>在linux中可以通过命令 ifconfig查看ip地址</p><p>输入地址后，我们应该就可以看到我们之前创建的share文件夹了</p><p>安装ssh sudo apt install openssh-server</p><p>安装yii sudo apt install composer composer create-project --prefer-dist yiisoft/yii2-app-basic basic</p></div><!--[--><!--]--></div><footer class="vp-page-meta"><!----><div class="vp-meta-item git-info"><div class="vp-meta-item last-updated"><span class="meta-item-label">Last Updated: </span><!----></div><div class="vp-meta-item contributors"><span class="meta-item-label">Contributors: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: long275@126.com">long</span><!----><!--]--><!--]--></span></div></div></footer><!----><!--[--><!--]--></main><!--]--></div><!--[--><!----><!--]--><!--]--></div>
+    <script type="module" src="/assets/app-CpbStbhd.js" defer></script>
+  </body>
+</html>
