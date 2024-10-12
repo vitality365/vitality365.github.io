@@ -1,3 +1,8 @@
+---
+title: 网址收藏夹
+description: 收藏一些网址
+---
+
 # vuepress blog
 [https://ecosystem.vuejs.press/plugins/blog/blog/](https://ecosystem.vuejs.press/plugins/blog/blog/)
 

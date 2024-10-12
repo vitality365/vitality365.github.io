@@ -10,13 +10,21 @@ export default defineUserConfig({
   description: '记录生活点滴',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.press/images/hero.png',
+    // logo: 'https://vuejs.press/images/hero.png',
 
     navbar: [
       '/',
       {
         text: '文章',
         link: '/article/',
+      },
+      {
+        text: '工具',
+        link: '/tools/time.md',
+      },
+      {
+        text: '网址',
+        link: '/urls.md',
       },
       {
         text: '分类',
@@ -31,6 +39,8 @@ export default defineUserConfig({
         link: '/timeline/',
       },
     ],
+    notFound: ["找不到啊"],
+    backToHome: "回到首页"
   }),
 
   plugins: [
