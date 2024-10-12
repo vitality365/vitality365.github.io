@@ -198,11 +198,11 @@ Nginx代理过程，将业务服务器请求数据缓存到本地文件，再将
 
 
 
-* soft   nofile  65535
+soft   nofile  65535
 
 
 
-* hard   nofile  65535
+hard   nofile  65535
 
 然后在Nginx配置文件中，把文件限制及连接数信息改为65535：
 
@@ -223,9 +223,9 @@ events {
 2. 用 reload 参数定时重载 php-fpm 。这个主要原因是 php 脚本执行时间过长造成的，重载 php-fpm 能杜绝这个问题。如何彻底解决 php-cgi 脚本占用大量内存从而导致 502 错误的产生还值得进一步探讨，目前该做法不失为一种好办法。
 
 具体的做法是，用 crontab 让 php-fpm 平滑重启，从而不影响 PHP 脚本的运行。
-
+```
 */10* * * * /usr/local/php/sbin/php-fpm reload
-
+```
 
 
 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ 优化设置＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
@@ -242,10 +242,7 @@ events {
 
 1.尽量少安装PHP模块，最简单是最好（快）的
 
-
-
 2. Increas PHP FastCGI child number to 100 and even more.Sometime, 200 is OK! ( On 4GB memory server);
-
 
 
 2.把您的PHP FastCGI子进程数调到100或以上，在4G内存的服务器上200就可以
@@ -258,7 +255,7 @@ events {
 
 3.使用socket连接FastCGI，linux操作系统可以放在/dev/shm中
 
-注：在php-fpm.cnf里设置<valuename=”listen_address”>/tmp/nginx.socket</value>就可以通过socket连接FastCGI了，/dev/shm是内存文件系统，放在内存中肯定会快了.记得这时也要在nginx里的配置里进行修改，保持一致．
+注：在php-fpm.cnf里设置isten_address/tmp/nginx.socket就可以通过socket连接FastCGI了，/dev/shm是内存文件系统，放在内存中肯定会快了.记得这时也要在nginx里的配置里进行修改，保持一致．
 
 
 
@@ -269,12 +266,6 @@ location~ .*/.(php|php5)?$
 
 
 {
-
-
-
-#
-
-
 
 将Nginx与FastCGI的通信方式由TCP改为UnixSocket。TCP在高并发访问下比UnixSocket稳定，但Unix Socket速度要比TCP快。
 
@@ -300,18 +291,11 @@ include fcgi.conf;
 
 4. Increase Linux “max open files”, using the following command(must be root):
 
-
-
+```
 # echo ‘ulimit -HSn 65536′>> /etc/profile
-
-
-
 # echo ‘ulimit -HSn 65536 >> /etc/rc.local
-
-
-
 # source /etc/profile 
-
+```
 
 
 
@@ -320,7 +304,7 @@ include fcgi.conf;
 
 )
 
-
+```
 
 echo ‘ulimit -HSn 65536′ >> /etc/profile
 
@@ -332,7 +316,7 @@ echo ‘ulimit -HSn 65536′ >> /etc/rc.local
 
 source /etc/profile 
 
-
+```
 
 
 
@@ -342,11 +326,11 @@ source /etc/profile
 
 
 
-# vi /path/to/php-fpm.conf
+vi /path/to/php-fpm.conf
 
 
 
-Find “<value name=”rlimit_files”>1024</value>”
+Find “rlimit_files”
 
 
 
@@ -362,13 +346,13 @@ Restart PHP-FPM.
 
 5. 增加  PHP-FPM  打开文件描述符的限制
 
-# vi /path/to/php-fpm.conf
+vi /path/to/php-fpm.conf
 
 
 
 找到
 
-“<value name=”rlimit_files”>1024</value>”
+“rlimit_files”
 
 
 
