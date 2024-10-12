@@ -1,7 +1,0 @@
-import{_ as n,c as p,b as t,o as a}from"./app-CpbStbhd.js";const s={};function r(o,e){return a(),p("div",null,e[0]||(e[0]=[t("h1",{id:"nginx-tcp端口转发",tabindex:"-1"},[t("a",{class:"header-anchor",href:"#nginx-tcp端口转发"},[t("span",null,"nginx tcp端口转发")])],-1),t("p",null,"本来想通过nginx 把子域名80端口，映射到服务器上其他端口上，提供tcp端口服务。",-1),t("p",null,"但是配置的时候一直报错，应该是80端口被http占用了。应该是steam(tcp/udp)和http 只能又一个监听80端口。",-1),t("p",null,"配置的代码如下，注意，端口不能跟http的端口重复。",-1),t("p",null,"stream { upstream socket_proxy { hash $remote_addr consistent; # 转发的目的地址和端口 server 127.0.0.1:9999 weight=5 max_fails=3 fail_timeout=30s; }",-1),t("pre",null,[t("code",null,`server {
-   listen 8880;
-   proxy_connect_timeout 1s;
-   proxy_timeout 3s;
-   proxy_pass socket_proxy;
-}
-`)],-1),t("p",null,"}",-1)]))}const c=n(s,[["render",r],["__file","article12.html.vue"]]),i=JSON.parse('{"path":"/posts/article12.html","title":"nginx tcp端口转发","lang":"en-US","frontmatter":{"date":"2022-01-12T00:00:00.000Z","category":["技术分享"],"tag":["nginx"]},"headers":[],"git":{"updatedTime":1728634562000,"contributors":[{"name":"long","email":"long275@126.com","commits":1}]},"filePathRelative":"posts/article12.md","excerpt":"\\n<p>本来想通过nginx 把子域名80端口，映射到服务器上其他端口上，提供tcp端口服务。</p>\\n<p>但是配置的时候一直报错，应该是80端口被http占用了。应该是steam(tcp/udp)和http 只能又一个监听80端口。</p>\\n<p>配置的代码如下，注意，端口不能跟http的端口重复。</p>\\n<p>stream {\\nupstream socket_proxy {\\nhash $remote_addr consistent;\\n# 转发的目的地址和端口\\nserver 127.0.0.1:9999 weight=5 max_fails=3 fail_timeout=30s;\\n}</p>"}');export{c as comp,i as data};

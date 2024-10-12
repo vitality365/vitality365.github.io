@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.18" />
+    <style>
+      :root {
+        --vp-c-bg: #fff;
+      }
+
+      [data-theme='dark'] {
+        --vp-c-bg: #1b1b1f;
+      }
+
+      html,
+      body {
+        background-color: var(--vp-c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme')
+      const systemDarkMode =
+        'matchMedia' in window
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : false
+
+      if (userMode === 'light') {
+        document.documentElement.dataset.theme = 'light'
+      } else if (userMode === 'dark' || systemDarkMode) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
+    <title>MySql表锁、行锁、共享锁、排他锁、乐观锁、悲观锁 | 活力网</title><meta name="description" content="记录生活点滴">
+    <link rel="preload" href="/assets/style-CMyawGRf.css" as="style"><link rel="stylesheet" href="/assets/style-CMyawGRf.css">
+    <link rel="modulepreload" href="/assets/app-C8JjDM0h.js"><link rel="modulepreload" href="/assets/mysql-lock.html-D4mxvRSF.js">
+    <link rel="prefetch" href="/assets/index.html-Ceya-3bR.js" as="script"><link rel="prefetch" href="/assets/urls.html-BeC4rxtN.js" as="script"><link rel="prefetch" href="/assets/centos7-lnmp.html-p9kv6quw.js" as="script"><link rel="prefetch" href="/assets/ddos.html-DcF4baqS.js" as="script"><link rel="prefetch" href="/assets/dont-buy-stock.html-D6v7HSqo.js" as="script"><link rel="prefetch" href="/assets/es6-note.html-BWvL17xs.js" as="script"><link rel="prefetch" href="/assets/html-download-error.html-BhBP5LIL.js" as="script"><link rel="prefetch" href="/assets/ios-archive-error.html-BKM0-peQ.js" as="script"><link rel="prefetch" href="/assets/linux-command.html-Cp8mDIuz.js" as="script"><link rel="prefetch" href="/assets/linux-error.html-DcPXxQR6.js" as="script"><link rel="prefetch" href="/assets/linux-git.html-DMKkNGgv.js" as="script"><link rel="prefetch" href="/assets/linux-large-file.html-BvsOvLIt.js" as="script"><link rel="prefetch" href="/assets/linux-maintain.html-wCA_YgWL.js" as="script"><link rel="prefetch" href="/assets/linux-screen.html-D8Jbw8BX.js" as="script"><link rel="prefetch" href="/assets/linux-vim.html-DTfKfrr_.js" as="script"><link rel="prefetch" href="/assets/linux-zip.html-DcpZNtjJ.js" as="script"><link rel="prefetch" href="/assets/mini-program-optimization.html-oOWla3_C.js" as="script"><link rel="prefetch" href="/assets/mysql-optimization.html-D5M6C3fI.js" as="script"><link rel="prefetch" href="/assets/mysql-query-type-change.html-COjYHae8.js" as="script"><link rel="prefetch" href="/assets/nginx-502.html-DLoyFfnM.js" as="script"><link rel="prefetch" href="/assets/nginx-dommain.html-B0FddIaM.js" as="script"><link rel="prefetch" href="/assets/nginx-note.html-DXy227do.js" as="script"><link rel="prefetch" href="/assets/nginx-tcp.html-DUiQr2dy.js" as="script"><link rel="prefetch" href="/assets/php-time-error.html-WtgM-43T.js" as="script"><link rel="prefetch" href="/assets/ubuntu-lnmp.html-PI9G25QL.js" as="script"><link rel="prefetch" href="/assets/ubuntu-redis.html-BjZrAA_B.js" as="script"><link rel="prefetch" href="/assets/vuepress-study.html-CiPeWHPr.js" as="script"><link rel="prefetch" href="/assets/web-security.html-CQSt1uZX.js" as="script"><link rel="prefetch" href="/assets/yii-mail.html-Cs9Q-74X.js" as="script"><link rel="prefetch" href="/assets/​letsencrypt-ssl.html-DM-QXXph.js" as="script"><link rel="prefetch" href="/assets/404.html-CHa7f-vE.js" as="script"><link rel="prefetch" href="/assets/index.html--MwiC_4Z.js" as="script"><link rel="prefetch" href="/assets/index.html-B_dkROvV.js" as="script"><link rel="prefetch" href="/assets/index.html-DWakqT49.js" as="script"><link rel="prefetch" href="/assets/index.html-BJr_wPvR.js" as="script"><link rel="prefetch" href="/assets/index.html-D1lUAg4J.js" as="script"><link rel="prefetch" href="/assets/index.html-yi7nruwt.js" as="script"><link rel="prefetch" href="/assets/index.html-DMJoqxeh.js" as="script"><link rel="prefetch" href="/assets/index.html-BfLor3m5.js" as="script"><link rel="prefetch" href="/assets/index.html-B72OIu4s.js" as="script"><link rel="prefetch" href="/assets/index.html-D_4NNfrZ.js" as="script"><link rel="prefetch" href="/assets/index.html-BizhlFdq.js" as="script"><link rel="prefetch" href="/assets/index.html-CvO-Zx9g.js" as="script"><link rel="prefetch" href="/assets/index.html-CkABrhzC.js" as="script"><link rel="prefetch" href="/assets/index.html-C5p6kLqC.js" as="script"><link rel="prefetch" href="/assets/index.html-BlllD3Ps.js" as="script"><link rel="prefetch" href="/assets/index.html-DCnvpGhW.js" as="script"><link rel="prefetch" href="/assets/index.html-D28ArL5i.js" as="script"><link rel="prefetch" href="/assets/index.html-BJ5Cn-1h.js" as="script"><link rel="prefetch" href="/assets/index.html-YfB4hg3A.js" as="script"><link rel="prefetch" href="/assets/index.html-DLeumw60.js" as="script"><link rel="prefetch" href="/assets/index.html-DKvoiyaV.js" as="script"><link rel="prefetch" href="/assets/index.html-NVn9dP4w.js" as="script"><link rel="prefetch" href="/assets/index.html-DPMjV1sj.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="vp-theme-container external-link-icon" vp-container><!--[--><header class="vp-navbar" vp-navbar><div class="vp-toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a class="route-link" href="/"><img class="vp-site-logo" src="https://vuejs.press/images/hero.png" alt="活力网"><span class="vp-site-name vp-hide-mobile" aria-hidden="true">活力网</span></a></span><div class="vp-navbar-items-wrapper" style=""><!--[--><!--]--><nav class="vp-navbar-items vp-hide-mobile" aria-label="site navigation"><!--[--><div class="vp-navbar-item"><a class="route-link auto-link" href="/" aria-label="首页"><!---->首页<!----></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/article/" aria-label="文章"><!---->文章<!----></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/category/" aria-label="分类"><!---->分类<!----></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/tag/" aria-label="标签"><!---->标签<!----></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/timeline/" aria-label="时间线"><!---->时间线<!----></a></div><!--]--></nav><!--[--><!--]--><button type="button" class="vp-toggle-color-mode-button" title="toggle color mode"><svg class="light-icon" viewbox="0 0 32 32" style=""><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg class="dark-icon" viewbox="0 0 32 32" style="display:none;"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><!----></div></header><!--]--><div class="vp-sidebar-mask"></div><!--[--><aside class="vp-sidebar" vp-sidebar><nav class="vp-navbar-items" aria-label="site navigation"><!--[--><div class="vp-navbar-item"><a class="route-link auto-link" href="/" aria-label="首页"><!---->首页<!----></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/article/" aria-label="文章"><!---->文章<!----></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/category/" aria-label="分类"><!---->分类<!----></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/tag/" aria-label="标签"><!---->标签<!----></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/timeline/" aria-label="时间线"><!---->时间线<!----></a></div><!--]--></nav><!--[--><!--]--><ul class="vp-sidebar-items"><!--[--><li><p tabindex="0" class="vp-sidebar-item vp-sidebar-heading">MySql表锁、行锁、共享锁、排他锁、乐观锁、悲观锁 <!----></p><!----></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="vp-page"><!--[--><!--]--><div class="theme-default-content" vp-content><!--[--><!--]--><div><h1 id="mysql表锁、行锁、共享锁、排他锁、乐观锁、悲观锁" tabindex="-1"><a class="header-anchor" href="#mysql表锁、行锁、共享锁、排他锁、乐观锁、悲观锁"><span>MySql表锁、行锁、共享锁、排他锁、乐观锁、悲观锁</span></a></h1><p>表锁</p><pre><code>锁住整个表。
+
+开销小，加锁快。
+
+不会死锁(一次性加载所需的所有表)。
+
+锁粒度大，发生锁冲突概率大，并发效率低。
+
+适合查询。
+</code></pre><p>行锁</p><pre><code>锁住一行记录。
+
+开销大，加锁慢。
+
+会死锁。
+
+锁粒度小，发生所冲突概率小，并发效率高。
+
+适合并发写，事务控制。
+
+并不是直接丢记录行加锁，而是对行对应的索引加锁：
+
+如果sql 语句操作了主键索引，Mysql 就会锁定这条主键索引。
+
+如果sql语句操作了非主键索引，MySQL会先锁定该非主键索引，再锁定相关的主键索引。
+
+在InnoDB中，如果SQL语句不涉及索引，则会通过隐藏的聚簇索引来对记录加锁。
+
+
+
+对聚簇索引加锁，实际效果跟表锁一样，因为找到某一条记录就得扫描全表，要扫描全表，就得锁定表。
+
+
+
+MyISAM引擎支持表级锁，不支持行级锁。
+
+
+
+InnoDB引擎支持表级锁和行级锁，默认为行级锁。
+</code></pre><p>共享锁</p><pre><code>有称之为S锁、读锁。
+
+当前线程对共享资源加共享锁，其他线程可以读取此资源、可以继续追加共享锁，但是不能修改此资源、不能追加排他锁。
+
+语法：select id from t_table in share mode;
+
+多个共享锁可以共存，共享锁与排他锁不能共存。
+</code></pre><p>排他锁：</p><pre><code>又称之为X锁、写锁。
+
+当前线程对共享资源加排他锁，其他线程不允许读取此资源，不允许追加共享锁，不允许修改此资源，不允许追加排他锁。
+
+语法：
+
+update t_table set a =1; // 数据库的增删改操作默认都会加排他锁
+
+select * from t_table for update;// for update也是一种增删改
+
+排他锁是独占的，不会与其他锁共存。
+</code></pre><p>乐观锁</p><pre><code>乐观地认为，并发问题很难发生。
+
+乐观锁虽然认为并发问题很难发生，但并不是不会发生，所以也会有措施防止问题真的产生：每次数据修改都自增版本号version。
+
+进行数据读取时，并不加锁，而是同时读取当前的版本号version1；在对数据进行修改时，要判断当前的版本号version2是否等于之前的版本号version1。
+
+版本号不匹配，则代表着并发问题已产生，所以需要回滚此次操作。
+
+实现方式：版本号机制、CAS。
+</code></pre><p>悲观锁</p><pre><code>悲观锁：悲观地认为，并发问题极易发生。
+
+悲观锁认为并发问题极易发生，所以每次操作，无论读写，都会对记录加锁，以防止其他线程对数据进行修改。
+
+实现方式：数据库的行锁、读锁和写锁。
+</code></pre><p>乐观锁与悲观锁是逻辑上的锁，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁，都是悲观锁。</p></div><!--[--><!--]--></div><footer class="vp-page-meta"><!----><div class="vp-meta-item git-info"><div class="vp-meta-item last-updated"><span class="meta-item-label">Last Updated: </span><!----></div><div class="vp-meta-item contributors"><span class="meta-item-label">Contributors: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: long275@126.com">test</span><!----><!--]--><!--]--></span></div></div></footer><!----><!--[--><!--]--></main><!--]--></div><!--[--><!----><!--]--><!--]--></div>
+    <script type="module" src="/assets/app-C8JjDM0h.js" defer></script>
+  </body>
+</html>
